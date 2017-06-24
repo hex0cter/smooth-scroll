@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Page Scroller",
+  "author": "Daniel Han",
+  "short_name": "Page Scroller",
+  "description": "Scroll your webpage without moving your palm off the center of keyboard",
+  "version": "1.0",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+   "activeTab",
+   "storage",
+   "tabs",
+   "http://*/",
+   "https://*/",
+   "file:///*/"
+   ]
+}
