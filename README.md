@@ -7,20 +7,20 @@ This extension allows you to scroll with the H, J, K, L key, just as in vim, or 
 like you do in a PC game.
 
 ## Install
-You can install the extension from [chrome web store](https://chrome.google.com/webstore/).
+You can install the extension from [chrome web store](https://chrome.google.com/webstore/detail/page-scroller/gkhebpnlfbdhbhnlgdpcpidkcgmmhdhp?hl=en).
 
 ## How to use
 
-Scroll Down:
+### Scroll Down:
 Left hand: S, right hand: J
 
-Scroll Up:
+### Scroll Up:
 Left hand: W, right hand: K
 
-Scroll Left:
+### Scroll Left:
 Left hand: A, right hand: H
 
-Scroll Right:
+### Scroll Right:
 Left hand: D, right hand: L
 
 ## License
@@ -29,4 +29,4 @@ This code is free to use under the terms of the MIT license.
 
 ## Contribution
 
-You are more than welcome to raise any issues [here](https://github.com/hex0cter/js-injector/issues), or create a Pull Request.
+You are more than welcome to raise any issues [here](https://github.com/hex0cter/page-scroller/issues), or create a Pull Request.
