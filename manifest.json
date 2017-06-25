@@ -5,6 +5,10 @@
   "short_name": "Page Scroller",
   "description": "Scroll your webpage without moving your palm off the center of keyboard",
   "version": "1.0",
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
   "background": {
     "scripts": ["background.js"]
   },

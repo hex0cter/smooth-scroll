@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Test Extension Options</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="libs/jquery-3.2.1.slim.min.js"></script>
+  <link rel="stylesheet" href="css/options.css">
+</head>
+<body>
+<div class="container">
+  <h2>Speed</h2>
+  <div class="row">
+    <div class="col-xs-12">
+      <div>Set the desired scrolling speed:</div>
+      <div class="range range-info">
+        <input type="range" id="scrollSpeed" min="1" max="100" value="50" step="1">
+        <output id="speedInfo">50</output>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <h2>Keys</h2>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="vim"> Vim (H J K L)
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="gamer"> Gamer (W A S D)
+    </label>
+  </div>
+
+  <button id="save" class="btn btn-info pull-right">Save</button>
+  <div id="status"></div>
+</div>
+
+
+<script src="options.js"></script>
+</div>
+</body>
+</html>
