@@ -403,6 +403,4 @@ function keydownTriggered(e) {
   }
 }
 
-//window.addEventListener('keydown', keydownTriggered);
-
 console.log("smoothscroll.js: scrollSettings= " + JSON.stringify(scrollSettings));
