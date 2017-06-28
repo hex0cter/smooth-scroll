@@ -14,8 +14,8 @@
     <div class="col-xs-12">
       <div>Set the desired scrolling speed:</div>
       <div class="range range-info">
-        <input type="range" id="scrollSpeed" min="1" max="100" value="50" step="1">
-        <output id="speedInfo">50</output>
+        <input type="range" id="scrollSpeed" min="1" max="30" value="15" step="1">
+        <output id="speedInfo">15</output>
       </div>
     </div>
   </div>
@@ -25,15 +25,19 @@
   <h2>Keys</h2>
   <div class="checkbox">
     <label>
+      <input type="checkbox" id="arrow"> Arrows (↑ ↓ ← →)
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
       <input type="checkbox" id="vim"> Vim (H J K L)
     </label>
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" id="gamer"> Gamer (W A S D)
+      <input type="checkbox" id="gamer"> Gaming (W A S D)
     </label>
   </div>
-
   <button id="save" class="btn btn-info pull-right">Save</button>
   <div id="status"></div>
 </div>

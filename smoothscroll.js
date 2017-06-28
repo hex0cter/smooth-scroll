@@ -324,16 +324,85 @@
 
 
 // Added by Daniel Han
-window.addEventListener('keydown', function(e) {
-  console.log("pressed key: " + e.key);
+function scrollUp(settings) {
+  var offset = settings.scrollSpeed * -2;
+  console.log("Scrolling by  " + offset);
+  window.scrollBy({ top: offset, left: 0, behavior: 'smooth' });
+}
+function scrollDown(settings) {
+  var offset = settings.scrollSpeed * 2;
+  console.log("Scrolling by  " + offset);
+  window.scrollBy({ top: offset, left: 0, behavior: 'smooth' });
+}
+function scrollLeft(settings) {
+  var offset = settings.scrollSpeed * -2;
+  console.log("Scrolling by  " + offset);
+  window.scrollBy({ top: 0, left: offset, behavior: 'smooth' });
+}
+function scrollRight(settings) {
+  var offset = settings.scrollSpeed * 2;
+  console.log("Scrolling by  " + offset);
+  window.scrollBy({ top: 0, left: offset, behavior: 'smooth' });
+}
 
-  if (e.key == 'j' || e.key == 's') {
-    window.scrollBy({ top: 40, left: 0, behavior: 'smooth' });
-  } else if (e.key == 'k' || e.key == 'w') {
-    window.scrollBy({ top: -80, left: 0, behavior: 'smooth' });
-  }  else if (e.key == 'h' || e.key == 'a') {
-    window.scrollBy({ top: 0, left: -40, behavior: 'smooth' });
-  } else if (e.key == 'l' || e.key == 'd') {
-    window.scrollBy({ top: 0, left: 40, behavior: 'smooth' });
+function keydownTriggered(e) {
+  console.log("pressed key: " + e.key + ", scrollSettings: " + JSON.stringify(scrollSettings));
+
+  if (scrollSettings.useArrow) {
+    switch (e.key) {
+      case 'ArrowDown':
+        scrollDown(scrollSettings);
+        break;
+      case 'ArrowUp':
+        scrollUp(scrollSettings);
+        break;
+      case 'ArrowLeft':
+        scrollLeft(scrollSettings);
+        break;
+      case 'ArrowRight':
+        scrollRight(scrollSettings);
+        break;
+      default:
+    }
   }
-});
+
+  if (scrollSettings.useVim) {
+    switch (e.key) {
+      case 'j':
+        scrollDown(scrollSettings);
+        break;
+      case 'k':
+        scrollUp(scrollSettings);
+        break;
+      case 'h':
+        scrollLeft(scrollSettings);
+        break;
+      case 'l':
+        scrollRight(scrollSettings);
+        break;
+      default:
+    }
+  }
+
+  if (scrollSettings.useGamer) {
+    switch (e.key) {
+      case 's':
+        scrollDown(scrollSettings);
+        break;
+      case 'w':
+        scrollUp(scrollSettings);
+        break;
+      case 'a':
+        scrollLeft(scrollSettings);
+        break;
+      case 'd':
+        scrollRight(scrollSettings);
+        break;
+      default:
+    }
+  }
+}
+
+//window.addEventListener('keydown', keydownTriggered);
+
+console.log("smoothscroll.js: scrollSettings= " + JSON.stringify(scrollSettings));

@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Page Scroller",
+  "name": "Smooth Scroll",
   "author": "Daniel Han",
-  "short_name": "Page Scroller",
+  "short_name": "Smooth Scrolling",
   "description": "Scroll your webpage without moving your palm off the center of keyboard",
   "version": "1.0",
   "options_ui": {
@@ -18,6 +18,7 @@
    "tabs",
    "http://*/",
    "https://*/",
-   "file:///*/"
+   "file:///*/",
+   "*://*/*"
    ]
 }
