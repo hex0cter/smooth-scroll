@@ -5,13 +5,11 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
         'useVim': false,
         'useGamer': false,
         'useArrow': true}, function(settings) {
-          chrome.tabs.executeScript(tabId, {file: "libs/jquery-3.2.1.slim.min.js", allFrames: false}, function () {
           chrome.tabs.executeScript(tabId, {code: "var scrollSettings = " + JSON.stringify(settings) + ";", allFrames: false}, function() {
             chrome.tabs.executeScript(tabId, {file: "smoothscroll.js", allFrames: false}, function () {
               chrome.tabs.executeScript(tabId, {code: "window.removeEventListener('keydown', keydownTriggered); window.removeEventListener('keyup', keyupTriggered);window.addEventListener('keydown', keydownTriggered);window.addEventListener('keyup', keyupTriggered);", allFrames: false});
             });
           });
-        });
       });
     });
   }

@@ -1,6 +1,5 @@
-$("#scrollSpeed").on('change', function(){
-      $("#speedInfo")[0].value=$("#scrollSpeed")[0].value;
-
+document.getElementById('scrollSpeed').addEventListener('change',function() {
+  document.getElementById('speedInfo').value = document.getElementById('scrollSpeed').value;
 });
 
 // Saves options to chrome.storage
