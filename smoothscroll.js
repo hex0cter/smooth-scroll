@@ -8,7 +8,6 @@ function startScrollUp() {
   if (timer == null) {
     timer = setInterval(function() {
       y = y - parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
-      console.log("Scrolling to Y: " + y);
       window.scroll(x, y);
     }, delay);
   }
@@ -21,7 +20,6 @@ function startScrollDown() {
   if (timer == null) {
     timer = setInterval(function() {
       y = y + parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
-      console.log("Scrolling to Y: " + y);
       window.scroll(x, y);
     }, delay);
   }
@@ -33,7 +31,6 @@ function startScrollLeft() {
   if (timer == null) {
     timer = setInterval(function() {
       x = x - parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
-      console.log("Scrolling to X: " + x);
       window.scroll(x, y);
     }, delay);
   }
@@ -45,7 +42,6 @@ function startScrollRight() {
   if (timer == null) {
     timer = setInterval(function() {
       x = x + parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
-      console.log("Scrolling to X: " + x);
       window.scroll(x, y);
     }, delay);
   }

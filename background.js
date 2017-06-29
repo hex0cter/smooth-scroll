@@ -23,8 +23,8 @@ chrome.tabs.onActivated.addListener( function (activeInfo) {
       'useGamer': false,
       'useArrow': true}
       , function(settings) {
-        chrome.tabs.executeScript(activeInfo.tabId, {code: "scrollSettings = " + JSON.stringify(settings), allFrames: false}, function() {
-          chrome.tabs.executeScript(activeInfo.tabId, {code: "window.removeEventListener('keydown', keydownTriggered); window.removeEventListener('keyup', keyupTriggered); window.addEventListener('keydown', keydownTriggered); window.addEventListener('keyup', keyupTriggered);" , allFrames: false});
+        chrome.tabs.executeScript(activeInfo.tabId, {code: "if (typeof scrollSettings !== 'undefined') { scrollSettings = " + JSON.stringify(settings) + ";}", allFrames: false}, function() {
+          chrome.tabs.executeScript(activeInfo.tabId, {code: "if (typeof keydownTriggered === 'function' && typeof keyupTriggered === 'function') { window.removeEventListener('keydown', keydownTriggered); window.removeEventListener('keyup', keyupTriggered); window.addEventListener('keydown', keydownTriggered); window.addEventListener('keyup', keyupTriggered);}" , allFrames: false});
         });
     });
   });

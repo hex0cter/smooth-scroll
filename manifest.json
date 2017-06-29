@@ -4,7 +4,7 @@
   "author": "Daniel Han",
   "short_name": "Smooth Scrolling",
   "description": "Scroll your webpage without moving your palm off the center of keyboard",
-  "version": "1.0",
+  "version": "1.1",
   "options_ui": {
     "page": "options.html",
     "chrome_style": true
@@ -18,7 +18,6 @@
    "tabs",
    "http://*/",
    "https://*/",
-   "file:///*/",
-   "*://*/*"
+   "file:///*/"
    ]
 }

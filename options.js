@@ -14,21 +14,16 @@ function save_options() {
     useGamer: useGamer,
     useArrow: useArrow
   }, function() {
-    // Update status to let user know options were saved.
-    var status = document.getElementById('status');
-    status.textContent = 'Options saved.';
-    setTimeout(function() {
-      status.textContent = '';
-    }, 950);
+    console.log('Options saved.');
+    window.close();
   });
 }
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
-  // Use default value scrollSpeed = '40' and useVim = true.
   chrome.storage.sync.get({
-    scrollSpeed: 40,
+    scrollSpeed: 1,
     useVim: false,
     useGamer: false,
     useArrow: true
