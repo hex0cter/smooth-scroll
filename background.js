@@ -5,15 +5,13 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
         'useVim': false,
         'useGamer': false,
         'useArrow': true}, function(settings) {
+          chrome.tabs.executeScript(tabId, {file: "libs/jquery-3.2.1.slim.min.js", allFrames: false}, function () {
           chrome.tabs.executeScript(tabId, {code: "var scrollSettings = " + JSON.stringify(settings) + ";", allFrames: false}, function() {
             chrome.tabs.executeScript(tabId, {file: "smoothscroll.js", allFrames: false}, function () {
-              chrome.tabs.executeScript(tabId, {code: "window.removeEventListener('keydown', keydownTriggered);" , allFrames: false}, function() {
-                chrome.tabs.executeScript(tabId, {code: "window.addEventListener('keydown', keydownTriggered);" , allFrames: false}, function() {
-                  chrome.tabs.executeScript(tabId, {code: "console.log('new event listener registered'); ", allFrames: false});
-                });
-              });
+              chrome.tabs.executeScript(tabId, {code: "window.removeEventListener('keydown', keydownTriggered); window.removeEventListener('keyup', keyupTriggered);window.addEventListener('keydown', keydownTriggered);window.addEventListener('keyup', keyupTriggered);", allFrames: false});
             });
           });
+        });
       });
     });
   }
@@ -28,11 +26,7 @@ chrome.tabs.onActivated.addListener( function (activeInfo) {
       'useArrow': true}
       , function(settings) {
         chrome.tabs.executeScript(activeInfo.tabId, {code: "scrollSettings = " + JSON.stringify(settings), allFrames: false}, function() {
-          chrome.tabs.executeScript(activeInfo.tabId, {code: "window.removeEventListener('keydown', keydownTriggered);" , allFrames: false}, function () {
-            chrome.tabs.executeScript(activeInfo.tabId, {code: "window.addEventListener('keydown', keydownTriggered);" , allFrames: false}, function() {
-              chrome.tabs.executeScript(activeInfo.tabId, {code: "console.log('new event listener registered'); ", allFrames: false});
-            });
-          });
+          chrome.tabs.executeScript(activeInfo.tabId, {code: "window.removeEventListener('keydown', keydownTriggered); window.removeEventListener('keyup', keyupTriggered); window.addEventListener('keydown', keydownTriggered); window.addEventListener('keyup', keyupTriggered);" , allFrames: false});
         });
     });
   });

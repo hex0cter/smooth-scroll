@@ -1,45 +1,70 @@
 // Added by Daniel Han
+var delay = 1; //delay in milliseconds
+var timer = null;
 
-function simulateKeyPress(character) {
-  jQuery.event.trigger({ type : 'keypress', which : character });
+function startScrollUp() {
+  var y = document.scrollingElement.scrollTop;
+  var x = document.scrollingElement.scrollLeft;
+  if (timer == null) {
+    timer = setInterval(function() {
+      y = y - parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
+      console.log("Scrolling to Y: " + y);
+      window.scroll(x, y);
+    }, delay);
+  }
+
 }
 
-function scrollUp(settings) {
-  var offset = settings.scrollSpeed * -2;
-  console.log("Scrolling up by  " + offset);
-  window.scrollBy(0, offset);
+function startScrollDown() {
+  var y = document.scrollingElement.scrollTop;
+  var x = document.scrollingElement.scrollLeft;
+  if (timer == null) {
+    timer = setInterval(function() {
+      y = y + parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
+      console.log("Scrolling to Y: " + y);
+      window.scroll(x, y);
+    }, delay);
+  }
 }
 
-function scrollDown(settings) {
-  var offset = settings.scrollSpeed * 2;
-  console.log("Scrolling down by  " + offset);
-  window.scrollBy(0, offset);
+function startScrollLeft() {
+  var y = document.scrollingElement.scrollTop;
+  var x = document.scrollingElement.scrollLeft;
+  if (timer == null) {
+    timer = setInterval(function() {
+      x = x - parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
+      console.log("Scrolling to X: " + x);
+      window.scroll(x, y);
+    }, delay);
+  }
 }
-function scrollLeft(settings) {
-  var offset = settings.scrollSpeed * -2;
-  console.log("Scrolling left by  " + offset);
-  window.scrollBy(offset, 0);
-}
-function scrollRight(settings) {
-  var offset = settings.scrollSpeed * 2;
-  console.log("Scrolling right by  " + offset);
-  window.scrollBy(offset, 0);
+
+function startScrollRight() {
+  var y = document.scrollingElement.scrollTop;
+  var x = document.scrollingElement.scrollLeft;
+  if (timer == null) {
+    timer = setInterval(function() {
+      x = x + parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
+      console.log("Scrolling to X: " + x);
+      window.scroll(x, y);
+    }, delay);
+  }
 }
 
 function keydownTriggered(e) {
   if (scrollSettings.useArrow) {
     switch (e.key) {
       case 'ArrowDown':
-        scrollDown(scrollSettings);
+        startScrollDown();
         break;
       case 'ArrowUp':
-        scrollUp(scrollSettings);
+        startScrollUp();
         break;
       case 'ArrowLeft':
-        scrollLeft(scrollSettings);
+        startScrollLeft();
         break;
       case 'ArrowRight':
-        scrollRight(scrollSettings);
+        startScrollRight();
         break;
       default:
     }
@@ -48,16 +73,16 @@ function keydownTriggered(e) {
   if (scrollSettings.useVim) {
     switch (e.key) {
       case 'j':
-        scrollDown(scrollSettings);
+        startScrollDown();
         break;
       case 'k':
-        scrollUp(scrollSettings);
+        startScrollUp();
         break;
       case 'h':
-        scrollLeft(scrollSettings);
+        startScrollLeft();
         break;
       case 'l':
-        scrollRight(scrollSettings);
+        startScrollRight();
         break;
       default:
     }
@@ -66,18 +91,23 @@ function keydownTriggered(e) {
   if (scrollSettings.useGamer) {
     switch (e.key) {
       case 's':
-        scrollDown(scrollSettings);
+        startScrollDown();
         break;
       case 'w':
-        scrollUp(scrollSettings);
+        startScrollUp();
         break;
       case 'a':
-        scrollLeft(scrollSettings);
+        startScrollLeft();
         break;
       case 'd':
-        scrollRight(scrollSettings);
+        startScrollRight();
         break;
       default:
     }
   }
+}
+
+function keyupTriggered(e) {
+  clearInterval(timer);
+  timer = null;
 }
