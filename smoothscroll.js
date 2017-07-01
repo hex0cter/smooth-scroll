@@ -3,11 +3,13 @@ var delay = 1; //delay in milliseconds
 var timer = null;
 
 function startScrollUp() {
+  console.log("startScrollUp.")
+
   var y = document.scrollingElement.scrollTop;
   var x = document.scrollingElement.scrollLeft;
   if (timer == null) {
     timer = setInterval(function() {
-      y = y - parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
+      y = y - parseInt(scrollSettings.scrollSpeed);
       window.scroll(x, y);
     }, delay);
   }
@@ -15,53 +17,65 @@ function startScrollUp() {
 }
 
 function startScrollDown() {
+  console.log("startScrollDown.")
+
   var y = document.scrollingElement.scrollTop;
   var x = document.scrollingElement.scrollLeft;
   if (timer == null) {
     timer = setInterval(function() {
-      y = y + parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
+      y = y + parseInt(scrollSettings.scrollSpeed);
       window.scroll(x, y);
     }, delay);
   }
 }
 
 function startScrollLeft() {
+  console.log("startScrollLeft.")
+
   var y = document.scrollingElement.scrollTop;
   var x = document.scrollingElement.scrollLeft;
   if (timer == null) {
     timer = setInterval(function() {
-      x = x - parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
+      x = x - parseInt(scrollSettings.scrollSpeed);
       window.scroll(x, y);
     }, delay);
   }
 }
 
 function startScrollRight() {
+  console.log("startScrollRight.")
+
   var y = document.scrollingElement.scrollTop;
   var x = document.scrollingElement.scrollLeft;
   if (timer == null) {
     timer = setInterval(function() {
-      x = x + parseInt(scrollSettings.scrollSpeed); //if you want to increase speed simply increase increment interval
+      x = x + parseInt(scrollSettings.scrollSpeed);
       window.scroll(x, y);
     }, delay);
   }
 }
 
 function keydownTriggered(e) {
+  var inputTags = ['INPUT', 'TEXTAREA'];
+
+  if(inputTags.indexOf(e.target.tagName) > -1) {
+        return;
+  }
+
   if (scrollSettings.useArrow) {
     switch (e.key) {
       case 'ArrowDown':
         startScrollDown();
-        break;
+        return;
       case 'ArrowUp':
         startScrollUp();
-        break;
+        return;
       case 'ArrowLeft':
         startScrollLeft();
-        break;
+        return;
       case 'ArrowRight':
         startScrollRight();
-        break;
+        return;
       default:
     }
   }
@@ -70,16 +84,16 @@ function keydownTriggered(e) {
     switch (e.key) {
       case 'j':
         startScrollDown();
-        break;
+        return;
       case 'k':
         startScrollUp();
-        break;
+        return;
       case 'h':
         startScrollLeft();
-        break;
+        return;
       case 'l':
         startScrollRight();
-        break;
+        return;
       default:
     }
   }
@@ -88,19 +102,20 @@ function keydownTriggered(e) {
     switch (e.key) {
       case 's':
         startScrollDown();
-        break;
+        return;
       case 'w':
         startScrollUp();
-        break;
+        return;
       case 'a':
         startScrollLeft();
-        break;
+        return;
       case 'd':
         startScrollRight();
-        break;
+        return;
       default:
     }
   }
+  console.log("nothing to do.")
 }
 
 function keyupTriggered(e) {

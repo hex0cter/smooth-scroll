@@ -24,8 +24,8 @@ function save_options() {
 function restore_options() {
   chrome.storage.sync.get({
     scrollSpeed: 1,
-    useVim: false,
-    useGamer: false,
+    useVim: true,
+    useGamer: true,
     useArrow: true
   }, function(items) {
     document.getElementById('scrollSpeed').value = items.scrollSpeed;
@@ -35,5 +35,26 @@ function restore_options() {
     document.getElementById('arrow').checked = items.useArrow;
   });
 }
+
+function apply_options() {
+  var scrollSpeed = document.getElementById('scrollSpeed').value;
+  var useVim = document.getElementById('vim').checked;
+  var useGamer = document.getElementById('gamer').checked;
+  var useArrow = document.getElementById('arrow').checked;
+  var settings = {
+    scrollSpeed: scrollSpeed,
+    useVim: useVim,
+    useGamer: useGamer,
+    useArrow: useArrow
+  };
+
+  chrome.tabs.executeScript({code: "if (typeof scrollSettings !== 'undefined') { scrollSettings = " + JSON.stringify(settings) + ";}", allFrames: false}, function() {
+    chrome.tabs.executeScript({code: "if (typeof keydownTriggered === 'function' && typeof keyupTriggered === 'function') { window.removeEventListener('keydown', keydownTriggered); window.removeEventListener('keyup', keyupTriggered); window.addEventListener('keydown', keydownTriggered); window.addEventListener('keyup', keyupTriggered);}" , allFrames: false}, function(){
+      save_options();
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click',save_options);
+document.getElementById('apply').addEventListener('click',apply_options);

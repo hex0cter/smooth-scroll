@@ -5,13 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
   <link rel="stylesheet" href="libs/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/options.css">
+
+<style type="text/css" >
+body {
+  min-width: 305px; /* your desired width */
+  max-width: 100%;
+  position: relative;
+  vertical-align:middle;
+}
+</style >
 </head>
 <body>
 <div class="container">
-  <h2>Speed</h2>
+  <h4>Speed</h4>
   <div class="row">
     <div class="col-xs-12">
-      <div>Set your desired scrolling speed:</div>
       <div class="range range-info">
         <input type="range" id="scrollSpeed" min="1" max="300" value="1" step="1">
         <output id="speedInfo">1</output>
@@ -21,7 +29,6 @@
 
   <hr/>
 
-  <h2>Keys</h2>
   <div class="checkbox">
     <label>
       <input type="checkbox" id="arrow"> Arrows (↑ ↓ ← →)
@@ -37,8 +44,8 @@
       <input type="checkbox" id="gamer"> Gaming (W A S D)
     </label>
   </div>
-  <button id="save" class="btn btn-info pull-right">Save</button>
-  <div id="apply"></div>
+  <button id="apply" class="btn btn-info pull-right">Apply</button>
+  <div id="save"></div>
 </div>
 
 <script src="options.js"></script>

@@ -4,10 +4,20 @@
   "author": "Daniel Han",
   "short_name": "Smooth Scrolling",
   "description": "Scroll your webpage without moving your palm off the center of keyboard",
-  "version": "1.1",
+  "version": "1.2",
   "options_ui": {
     "page": "options.html",
     "chrome_style": true
+  },
+  "browser_action": {
+    "default_icon":
+      {
+        "16": "images/icon16.png",
+        "24": "images/icon24.png",
+        "32": "images/icon32.png"
+      },
+     "default_title": "Smooth Scroll",
+     "default_popup": "popup.html"
   },
   "background": {
     "scripts": ["background.js"]
