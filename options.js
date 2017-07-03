@@ -48,10 +48,22 @@ function apply_options() {
     useArrow: useArrow
   };
 
-  chrome.tabs.executeScript({code: "if (typeof scrollSettings !== 'undefined') { scrollSettings = " + JSON.stringify(settings) + ";}", allFrames: false}, function() {
-    chrome.tabs.executeScript({code: "if (typeof keydownTriggered === 'function' && typeof keyupTriggered === 'function') { window.removeEventListener('keydown', keydownTriggered); window.removeEventListener('keyup', keyupTriggered); window.addEventListener('keydown', keydownTriggered); window.addEventListener('keyup', keyupTriggered);}" , allFrames: false}, function(){
-      save_options();
-    });
+  chrome.tabs.executeScript({code: "typeof scrollSettings"}, function(result) {
+    if (result[0] === 'undefined') {
+      chrome.tabs.executeScript({file: "smoothscroll.js", allFrames: false}, function () {
+        chrome.tabs.executeScript({code: "scrollSettings = " + JSON.stringify(settings) + ";", allFrames: false}, function() {
+          chrome.tabs.executeScript({code: "window.removeEventListener('keydown', keydownTriggered); window.removeEventListener('keyup', keyupTriggered);window.addEventListener('keydown', keydownTriggered);window.addEventListener('keyup', keyupTriggered);", allFrames: false}, function() {
+            save_options();
+          });
+        });
+      });
+    } else {
+      chrome.tabs.executeScript({code: "scrollSettings = " + JSON.stringify(settings) + ";", allFrames: false}, function() {
+        chrome.tabs.executeScript({code: "window.removeEventListener('keydown', keydownTriggered); window.removeEventListener('keyup', keyupTriggered); window.addEventListener('keydown', keydownTriggered); window.addEventListener('keyup', keyupTriggered);" , allFrames: false}, function() {
+          save_options();
+        });
+      });
+    }
   });
 }
 
