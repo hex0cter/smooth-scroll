@@ -6,7 +6,7 @@ function scrollTo(x, y) {
   var maxWidth = document.body.scrollWidth;
   var maxHeight = document.body.scrollHeight;
 
-  if (x < 0 || y < 0 || x > maxWidth || y > maxHeight) {
+  if (x < - scrollSettings.scrollSpeed || y < - scrollSettings.scrollSpeed || x > maxWidth || y > maxHeight) {
     return;
   }
 
@@ -18,6 +18,7 @@ function startScrollUp() {
   var y = document.scrollingElement.scrollTop;
   var x = document.scrollingElement.scrollLeft;
   if (timer == null) {
+    timer = 1;
     console.log("startScrollUp.")
     timer = setInterval(function() {
       y = y - parseInt(scrollSettings.scrollSpeed);
@@ -31,6 +32,7 @@ function startScrollDown() {
   var y = document.scrollingElement.scrollTop;
   var x = document.scrollingElement.scrollLeft;
   if (timer == null) {
+    timer = 1;
     console.log("startScrollDown.")
     timer = setInterval(function() {
       y = y + parseInt(scrollSettings.scrollSpeed);
@@ -43,6 +45,7 @@ function startScrollLeft() {
   var y = document.scrollingElement.scrollTop;
   var x = document.scrollingElement.scrollLeft;
   if (timer == null) {
+    timer = 1;
     console.log("startScrollLeft.")
     timer = setInterval(function() {
       x = x - parseInt(scrollSettings.scrollSpeed);
@@ -55,6 +58,7 @@ function startScrollRight() {
   var y = document.scrollingElement.scrollTop;
   var x = document.scrollingElement.scrollLeft;
   if (timer == null) {
+    timer = 1;
     console.log("startScrollRight.")
     timer = setInterval(function() {
       x = x + parseInt(scrollSettings.scrollSpeed);
